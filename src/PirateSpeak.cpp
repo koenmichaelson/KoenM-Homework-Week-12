@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -11,6 +11,22 @@ enum Choices {TRANSLATE = 1, ADD, QUIT};
 //      In the function prompt the user to choose 1 of three menus. Translate, Add to
 //      Dictionary, or Quit.
 
+
+int menu() {
+
+    cout << "Menu" << endl;
+    cout << "(1) Translate" << endl << "(2) Add to Dictionary" << endl << "(3) Quit" << endl;
+
+    int userInput = 0;
+
+    cin >> userInput;
+
+    return userInput;
+
+
+}
+
+
 //TODO: Create the addWord() function. It takes no parameters and the return type
 //      is void.
 //      1) create a Pirate object
@@ -18,10 +34,39 @@ enum Choices {TRANSLATE = 1, ADD, QUIT};
 //      3) prompt the user to enter the pirate translation
 //      4) call the object function called addToFile and pass both words as parameters
 
+void addWord() {
+    Pirate p;
+    string english, pirate;
+
+    cin.ignore();
+
+    cout << "Enter English word: ";
+    getline(cin, english);
+
+    cout << "Enter Pirate translation: ";
+    getline(cin, pirate);
+
+    p.addToFile(english, pirate);
+
+    cout << "Word added successfully!\n";
+}
+
 //TODO: Create the translate() function. It takes no parameters and the return type is void
 //      1) create a Pirate object
 //      2) prompt the user to enter a word
 //      3) call the object function called translateWord and pass the word as a parameter
+
+void translate() {
+    Pirate p;
+    string word;
+
+    cout << "Enter word to translate: ";
+    cin >> word;
+
+    string result = p.translateWord(word);
+
+    cout << "Translation: " << result << endl;
+}
 
 int main() {
   int choice;
